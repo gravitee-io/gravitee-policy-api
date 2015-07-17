@@ -15,9 +15,16 @@
  */
 package io.gravitee.gateway.api.policy;
 
+import io.gravitee.gateway.api.Request;
+import io.gravitee.gateway.api.Response;
+
 /**
+ *
  * @author David BRASSELY (brasseld at gmail.com)
  */
-public interface Policy {
+public interface PolicyChain {
 
+    void doNext(Request request, Response response);
+
+    void doError(Throwable throwable);
 }
