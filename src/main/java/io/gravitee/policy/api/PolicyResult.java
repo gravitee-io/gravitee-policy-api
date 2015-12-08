@@ -13,10 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.gravitee.gateway.api.policy;
+package io.gravitee.policy.api;
 
 /**
  * @author David BRASSELY (brasseld at gmail.com)
  */
-public interface PolicyConfiguration {
+public interface PolicyResult {
+
+    boolean isFailure();
+
+    int httpStatusCode();
+
+    String message();
 }

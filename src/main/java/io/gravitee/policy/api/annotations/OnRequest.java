@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.gravitee.gateway.api.policy;
+package io.gravitee.policy.api.annotations;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author David BRASSELY (brasseld at gmail.com)
  */
-public interface PolicyResult {
-
-    boolean isFailure();
-
-    int httpStatusCode();
-
-    String message();
+@Target({ ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface OnRequest {
 }
