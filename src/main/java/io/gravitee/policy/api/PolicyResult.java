@@ -15,6 +15,8 @@
  */
 package io.gravitee.policy.api;
 
+import io.gravitee.common.http.HttpStatusCode;
+
 /**
  * @author David BRASSELY (brasseld at gmail.com)
  */
@@ -25,4 +27,31 @@ public interface PolicyResult {
     int httpStatusCode();
 
     String message();
+
+    static PolicyResult build(boolean isFailure, int statusCode, String message) {
+        return new PolicyResult() {
+            @Override
+            public boolean isFailure() {
+                return isFailure;
+            }
+
+            @Override
+            public int httpStatusCode() {
+                return statusCode;
+            }
+
+            @Override
+            public String message() {
+                return message;
+            }
+        };
+    }
+
+    static PolicyResult failure(int statusCode, String message) {
+        return build(true, statusCode, message);
+    }
+
+    static PolicyResult failure(String message) {
+        return failure(HttpStatusCode.INTERNAL_SERVER_ERROR_500, message);
+    }
 }
