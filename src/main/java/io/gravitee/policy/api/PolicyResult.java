@@ -16,9 +16,11 @@
 package io.gravitee.policy.api;
 
 import io.gravitee.common.http.HttpStatusCode;
+import io.gravitee.common.http.MediaType;
 
 /**
- * @author David BRASSELY (brasseld at gmail.com)
+ * @author David BRASSELY (david.brassely at graviteesource.com)
+ * @author GraviteeSource Team
  */
 public interface PolicyResult {
 
@@ -28,7 +30,9 @@ public interface PolicyResult {
 
     String message();
 
-    static PolicyResult build(boolean isFailure, int statusCode, String message) {
+    String contentType();
+
+    static PolicyResult build(boolean isFailure, int statusCode, String message, String contentType) {
         return new PolicyResult() {
             @Override
             public boolean isFailure() {
@@ -44,7 +48,16 @@ public interface PolicyResult {
             public String message() {
                 return message;
             }
+
+            @Override
+            public String contentType() {
+                return contentType;
+            }
         };
+    }
+
+    static PolicyResult build(boolean isFailure, int statusCode, String message) {
+        return build(isFailure, statusCode, message, MediaType.TEXT_PLAIN);
     }
 
     static PolicyResult failure(int statusCode, String message) {
@@ -53,5 +66,13 @@ public interface PolicyResult {
 
     static PolicyResult failure(String message) {
         return failure(HttpStatusCode.INTERNAL_SERVER_ERROR_500, message);
+    }
+
+    static PolicyResult failure(int statusCode, String message, String contentType) {
+        return build(true, statusCode, message, contentType);
+    }
+
+    static PolicyResult failure(String message, String contentType) {
+        return failure(HttpStatusCode.INTERNAL_SERVER_ERROR_500, message, contentType);
     }
 }
