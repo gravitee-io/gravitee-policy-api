@@ -19,12 +19,14 @@ import io.gravitee.gateway.api.Request;
 import io.gravitee.gateway.api.Response;
 
 /**
- *
- * @author David BRASSELY (brasseld at gmail.com)
+ * @author David BRASSELY (david.brassely at graviteesource.com)
+ * @author GraviteeSource Team
  */
 public interface PolicyChain {
 
     void doNext(Request request, Response response);
 
     void failWith(PolicyResult policyResult);
+
+    void streamFailWith(PolicyResult policyResult);
 }
