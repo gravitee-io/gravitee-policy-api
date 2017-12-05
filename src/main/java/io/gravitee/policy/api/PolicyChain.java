@@ -30,5 +30,5 @@ public interface PolicyChain {
 
     void streamFailWith(PolicyResult policyResult);
     
-    void break();
+    void doBreak();
 }
