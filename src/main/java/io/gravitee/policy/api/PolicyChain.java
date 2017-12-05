@@ -29,4 +29,6 @@ public interface PolicyChain {
     void failWith(PolicyResult policyResult);
 
     void streamFailWith(PolicyResult policyResult);
+    
+    void break();
 }
