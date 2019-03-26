@@ -57,7 +57,7 @@ public interface PolicyResult {
     }
 
     static PolicyResult build(boolean isFailure, int statusCode, String message) {
-        return build(isFailure, statusCode, message, MediaType.TEXT_PLAIN);
+        return build(isFailure, statusCode, message, null);
     }
 
     static PolicyResult failure(int statusCode, String message) {
