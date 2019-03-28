@@ -16,7 +16,8 @@
 package io.gravitee.policy.api;
 
 import io.gravitee.common.http.HttpStatusCode;
-import io.gravitee.common.http.MediaType;
+
+import java.util.Map;
 
 /**
  * @author David BRASSELY (david.brassely at graviteesource.com)
@@ -24,23 +25,18 @@ import io.gravitee.common.http.MediaType;
  */
 public interface PolicyResult {
 
-    boolean isFailure();
-
-    int httpStatusCode();
+    int statusCode();
 
     String message();
 
-    String contentType();
+    String key();
 
-    static PolicyResult build(boolean isFailure, int statusCode, String message, String contentType) {
+    Map<String, Object> parameters();
+
+    static PolicyResult build(int statusCode, String key, String message, Map<String, Object> parameters) {
         return new PolicyResult() {
             @Override
-            public boolean isFailure() {
-                return isFailure;
-            }
-
-            @Override
-            public int httpStatusCode() {
+            public int statusCode() {
                 return statusCode;
             }
 
@@ -50,29 +46,38 @@ public interface PolicyResult {
             }
 
             @Override
-            public String contentType() {
-                return contentType;
+            public String key() {
+                return key;
+            }
+
+            @Override
+            public Map<String, Object> parameters() {
+                return parameters;
             }
         };
-    }
-
-    static PolicyResult build(boolean isFailure, int statusCode, String message) {
-        return build(isFailure, statusCode, message, MediaType.TEXT_PLAIN);
-    }
-
-    static PolicyResult failure(int statusCode, String message) {
-        return build(true, statusCode, message);
     }
 
     static PolicyResult failure(String message) {
         return failure(HttpStatusCode.INTERNAL_SERVER_ERROR_500, message);
     }
 
-    static PolicyResult failure(int statusCode, String message, String contentType) {
-        return build(true, statusCode, message, contentType);
+    static PolicyResult failure(int statusCode, String message) {
+        return build(statusCode, null, message, null);
     }
 
-    static PolicyResult failure(String message, String contentType) {
-        return failure(HttpStatusCode.INTERNAL_SERVER_ERROR_500, message, contentType);
+    static PolicyResult failure(String key, int statusCode, String message) {
+        return build(statusCode, key, message, null);
+    }
+
+    static PolicyResult failure(String key, int statusCode, String message, Map<String, Object> parameters) {
+        return build(statusCode, key, message, parameters);
+    }
+
+    static PolicyResult failure(String key, String message) {
+        return failure(key, HttpStatusCode.INTERNAL_SERVER_ERROR_500, message);
+    }
+
+    static PolicyResult failure(String key, String message, Map<String, Object> parameters) {
+        return failure(key, HttpStatusCode.INTERNAL_SERVER_ERROR_500, message, parameters);
     }
 }
