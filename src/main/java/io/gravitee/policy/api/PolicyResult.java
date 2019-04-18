@@ -16,6 +16,7 @@
 package io.gravitee.policy.api;
 
 import io.gravitee.common.http.HttpStatusCode;
+import io.gravitee.common.http.MediaType;
 
 import java.util.Map;
 
@@ -33,7 +34,9 @@ public interface PolicyResult {
 
     Map<String, Object> parameters();
 
-    static PolicyResult build(int statusCode, String key, String message, Map<String, Object> parameters) {
+    String contentType();
+
+    static PolicyResult build(int statusCode, String key, String message, Map<String, Object> parameters, String contentType) {
         return new PolicyResult() {
             @Override
             public int statusCode() {
@@ -54,6 +57,11 @@ public interface PolicyResult {
             public Map<String, Object> parameters() {
                 return parameters;
             }
+
+            @Override
+            public String contentType() {
+                return contentType;
+            }
         };
     }
 
@@ -62,15 +70,15 @@ public interface PolicyResult {
     }
 
     static PolicyResult failure(int statusCode, String message) {
-        return build(statusCode, null, message, null);
+        return build(statusCode, null, message, null, MediaType.APPLICATION_JSON);
     }
 
     static PolicyResult failure(String key, int statusCode, String message) {
-        return build(statusCode, key, message, null);
+        return build(statusCode, key, message, null, MediaType.APPLICATION_JSON);
     }
 
     static PolicyResult failure(String key, int statusCode, String message, Map<String, Object> parameters) {
-        return build(statusCode, key, message, parameters);
+        return build(statusCode, key, message, parameters, MediaType.APPLICATION_JSON);
     }
 
     static PolicyResult failure(String key, String message) {
@@ -79,5 +87,9 @@ public interface PolicyResult {
 
     static PolicyResult failure(String key, String message, Map<String, Object> parameters) {
         return failure(key, HttpStatusCode.INTERNAL_SERVER_ERROR_500, message, parameters);
+    }
+
+    static PolicyResult failure(int statusCode, String message, String contentType) {
+        return build(statusCode, null, message, null, contentType);
     }
 }
