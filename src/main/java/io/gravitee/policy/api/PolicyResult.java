@@ -70,15 +70,15 @@ public interface PolicyResult {
     }
 
     static PolicyResult failure(int statusCode, String message) {
-        return build(statusCode, null, message, null, MediaType.APPLICATION_JSON);
+        return build(statusCode, null, message, null, MediaType.TEXT_PLAIN);
     }
 
     static PolicyResult failure(String key, int statusCode, String message) {
-        return build(statusCode, key, message, null, MediaType.APPLICATION_JSON);
+        return build(statusCode, key, message, null, MediaType.TEXT_PLAIN);
     }
 
     static PolicyResult failure(String key, int statusCode, String message, Map<String, Object> parameters) {
-        return build(statusCode, key, message, parameters, MediaType.APPLICATION_JSON);
+        return build(statusCode, key, message, parameters, MediaType.TEXT_PLAIN);
     }
 
     static PolicyResult failure(String key, String message) {
