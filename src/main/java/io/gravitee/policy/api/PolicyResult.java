@@ -92,4 +92,8 @@ public interface PolicyResult {
     static PolicyResult failure(int statusCode, String message, String contentType) {
         return build(statusCode, null, message, null, contentType);
     }
+
+    static PolicyResult failure(String key, int statusCode, String message, String contentType) {
+        return build(statusCode, key, message, null, contentType);
+    }
 }
