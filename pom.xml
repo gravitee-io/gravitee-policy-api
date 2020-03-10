@@ -36,6 +36,7 @@
     <properties>
         <gravitee-gateway-api.version>1.17.0</gravitee-gateway-api.version>
         <javax.inject.version>1</javax.inject.version>
+        <swagger-parser.version>2.0.14</swagger-parser.version>
     </properties>
 
     <dependencies>
@@ -49,6 +50,13 @@
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger.parser.v3</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>${swagger-parser.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>
