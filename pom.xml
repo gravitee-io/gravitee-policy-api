@@ -24,7 +24,7 @@
     <parent>
         <groupId>io.gravitee</groupId>
         <artifactId>gravitee-parent</artifactId>
-        <version>15</version>
+        <version>18</version>
     </parent>
 
     <groupId>io.gravitee.policy</groupId>
@@ -36,7 +36,7 @@
     <properties>
         <gravitee-gateway-api.version>1.20.0</gravitee-gateway-api.version>
         <javax.inject.version>1</javax.inject.version>
-        <swagger-parser.version>2.0.14</swagger-parser.version>
+        <swagger-parser.version>2.0.18</swagger-parser.version>
     </properties>
 
     <dependencies>
