@@ -23,5 +23,13 @@ import java.util.Optional;
  */
 public interface OperationVisitor<D, O> {
 
+    /**
+     * Specify if the policy must be displayed on WebUI
+     * @return
+     */
+    default boolean display() {
+        return true;
+    }
+
     Optional<Policy> visit(D descriptor, O operation);
 }
