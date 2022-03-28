@@ -22,7 +22,6 @@ import java.util.Optional;
  * @author GraviteeSource Team
  */
 public interface OperationVisitor<D, O> {
-
     /**
      * Specify if the policy must be displayed on WebUI
      * @return

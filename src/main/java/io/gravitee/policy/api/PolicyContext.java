@@ -21,7 +21,6 @@ package io.gravitee.policy.api;
  * @author GraviteeSource Team
  */
 public interface PolicyContext {
-
     void onActivation() throws Exception;
 
     void onDeactivation() throws Exception;

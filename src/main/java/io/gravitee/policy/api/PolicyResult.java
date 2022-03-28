@@ -17,7 +17,6 @@ package io.gravitee.policy.api;
 
 import io.gravitee.common.http.HttpStatusCode;
 import io.gravitee.common.http.MediaType;
-
 import java.util.Map;
 
 /**
@@ -25,7 +24,6 @@ import java.util.Map;
  * @author GraviteeSource Team
  */
 public interface PolicyResult {
-
     int statusCode();
 
     String message();

@@ -18,5 +18,4 @@ package io.gravitee.policy.api;
 /**
  * @author David BRASSELY (brasseld at gmail.com)
  */
-public interface PolicyConfiguration {
-}
+public interface PolicyConfiguration {}
