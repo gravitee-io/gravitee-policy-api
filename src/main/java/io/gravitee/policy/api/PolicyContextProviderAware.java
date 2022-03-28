@@ -21,6 +21,5 @@ package io.gravitee.policy.api;
  * @author GraviteeSource Team
  */
 public interface PolicyContextProviderAware {
-
     void setPolicyContextProvider(PolicyContextProvider policyContextProvider);
 }

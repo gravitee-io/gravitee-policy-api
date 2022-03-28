@@ -23,7 +23,6 @@ import io.gravitee.gateway.api.Response;
  * @author GraviteeSource Team
  */
 public interface PolicyChain {
-
     void doNext(Request request, Response response);
 
     void failWith(PolicyResult policyResult);
