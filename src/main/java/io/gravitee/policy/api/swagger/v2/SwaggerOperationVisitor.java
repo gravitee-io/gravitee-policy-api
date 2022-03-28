@@ -23,5 +23,4 @@ import io.swagger.models.Swagger;
  * @author David BRASSELY (david.brassely at graviteesource.com)
  * @author GraviteeSource Team
  */
-public interface SwaggerOperationVisitor extends OperationVisitor<Swagger, Operation> {
-}
+public interface SwaggerOperationVisitor extends OperationVisitor<Swagger, Operation> {}

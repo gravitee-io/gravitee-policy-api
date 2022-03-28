@@ -1,4 +1,3 @@
-
 /**
  * Copyright (C) 2015 The Gravitee team (http://gravitee.io)
  *
@@ -22,7 +21,6 @@ package io.gravitee.policy.api;
  * @author GraviteeSource Team
  */
 public interface PolicyContextProvider {
-
     <T> T getNativeProvider();
 
     <T> T getComponent(Class<T> clazz);

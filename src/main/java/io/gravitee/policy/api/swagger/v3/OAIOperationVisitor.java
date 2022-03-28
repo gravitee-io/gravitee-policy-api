@@ -23,6 +23,4 @@ import io.swagger.v3.oas.models.Operation;
  * @author David BRASSELY (david.brassely at graviteesource.com)
  * @author GraviteeSource Team
  */
-public interface OAIOperationVisitor extends OperationVisitor<OpenAPI, Operation> {
-
-}
+public interface OAIOperationVisitor extends OperationVisitor<OpenAPI, Operation> {}
