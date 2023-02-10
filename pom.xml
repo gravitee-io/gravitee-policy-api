@@ -36,7 +36,7 @@
     <properties>
         <gravitee-gateway-api.version>1.20.1</gravitee-gateway-api.version>
         <javax.inject.version>1</javax.inject.version>
-        <swagger-parser.version>2.0.23</swagger-parser.version>
+        <swagger-parser.version>2.1.11</swagger-parser.version>
     </properties>
 
     <dependencies>
